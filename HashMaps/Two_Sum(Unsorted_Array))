@@ -1,0 +1,17 @@
+//when the array is unsorted we cannot solve the question inplace 
+//Time Complexity-O(n),
+//Space Complexity-O(n)
+var twoSum = function(nums, target) {
+    let n=nums.length;
+    let map=new Map();
+     for(let i=0;i<n;i++){
+        let need=target-nums[i];
+        if(map.has(need)){
+            return [map.get(need),i]
+        }
+        else{
+            map.set(nums[i],i);
+        }
+    }
+    return [];
+};
