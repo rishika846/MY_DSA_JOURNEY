@@ -1,0 +1,22 @@
+//Use Math.floor to find integer since in js "/" operator may give float values
+var search = function(nums, target) {
+    let n=nums.length;
+    let i=0;
+    let j=n-1;
+    while(i<=j){
+        let mid=Math.floor((i+j)/2);
+        if(nums[mid]==target){
+            return mid;
+        }
+        else if(nums[mid]>target){
+            j=mid-1;
+
+        }
+        else{
+            i=mid+1;
+
+        }
+    }
+    return -1;
+    
+};
