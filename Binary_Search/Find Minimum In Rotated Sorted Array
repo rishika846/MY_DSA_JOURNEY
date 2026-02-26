@@ -1,5 +1,5 @@
 //using Binary Search
-//Time-O(n)
+//Time-O(logn)
 //Space-O(1)
 var findMin = function(nums) {
     let i=0;
