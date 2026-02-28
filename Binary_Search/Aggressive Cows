@@ -1,0 +1,40 @@
+//Time=>O(NlogN)
+function canPlaced(stalls,guess,k){
+        let placed_prev=stalls[0];
+        let count=1;
+        for(let i=1;i<stalls.length;i++){
+            if(Math.abs(stalls[i]-placed_prev)>=guess){
+                placed_prev=stalls[i];
+                count++;
+                if(count==k){
+                    return true;
+                }
+                
+            }
+            
+        }
+        return false;
+    }
+class Solution {
+    
+    aggressiveCows(stalls, k) {
+        // code here
+        let n=stalls.length;
+        let i=1;
+        let res=-1;
+        let j=Math.max(...stalls)-Math.min(...stalls);
+        stalls.sort((a, b) => a - b);
+        while(i<=j){
+            let guess=Math.floor((i+j)/2);
+            if(canPlaced(stalls,guess,k)){
+                res=guess;
+                
+                i=guess+1;
+            }
+            else{
+             j=guess-1;   
+            }
+        }
+        return res;
+    }
+}
