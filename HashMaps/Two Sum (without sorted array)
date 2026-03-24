@@ -1,0 +1,22 @@
+Time Complexity : O(n)
+// Approach using hash map
+class Solution {
+public:
+    vector<int> twoSum(vector<int>& nums, int target) {
+        int n=nums.size();
+        unordered_map <int , int> f;
+        for(int i=0;i<n;i++){
+            int element=target-nums[i];
+            if(f.find(element)!=f.end()){
+                return {i,f[element]};
+
+            }
+            else{
+                f[nums[i]]=i;
+            }
+    
+            
+        }
+        return {};
+    }
+};
