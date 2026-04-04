@@ -1,0 +1,24 @@
+//Time Complexity for the program : O(n)
+//Space Complexity : O(1)
+
+class Solution {
+  public:
+    int maxSubarraySum(vector<int>& nums, int k) {
+        // code here
+        int n=nums.size();
+        int slow=0;
+        int sum=0;
+        int fast=k-1;
+        for(int i=slow;i<=fast;i++){
+            sum+=nums[i];
+        }
+        int maxSum=sum;
+        while(fast<n-1){
+            fast++;
+            slow++;
+            sum=(sum-nums[slow-1])+nums[fast];
+            maxSum=max(sum,maxSum);
+        }
+        return maxSum;
+    }
+};
