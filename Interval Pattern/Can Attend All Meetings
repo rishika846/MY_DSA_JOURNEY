@@ -1,0 +1,15 @@
+class Solution {
+  public:
+    bool canAttend(vector<vector<int>> &arr) {
+        int n =arr.size();
+        sort(arr.begin(),arr.end());
+        int maxEnd=arr[0][1];
+        for(int i=1;i<n;i++){
+            if(arr[i][0]<maxEnd){
+                return false;
+            }
+            maxEnd=max(maxEnd,arr[i][1]);
+        }
+        return true;
+    }
+};
