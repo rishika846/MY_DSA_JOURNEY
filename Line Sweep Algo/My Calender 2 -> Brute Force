@@ -1,0 +1,39 @@
+class MyCalendarTwo {
+public:
+vector<vector<int>>bookings;
+vector<vector<int>>overlap_bookings;
+    MyCalendarTwo(){
+        
+    }
+    
+    bool book(int s2, int e2){
+        e2=e2-1;
+        //check if incoming booking overlap with existing booking 
+        for(int i=0;i<overlap_bookings.size();i++){
+            int s1=overlap_bookings[i][0];
+            int e1=overlap_bookings[i][1];
+          if(max(s1,s2)<=min(e1,e2)){
+            return false;
+          }
+        }
+        //check for intersections in bookings vector and add overlaps in overlap_bookings 
+        for(int i=0;i<bookings.size();i++){
+            int s1=bookings[i][0];
+            int e1=bookings[i][1];
+            if(max(s1,s2)<=min(e1,e2)){
+                overlap_bookings.push_back({max(s1,s2),min(e1,e2)});
+            }
+        }
+        bookings.push_back({s2,e2});
+        return true;
+    
+
+
+    }
+};
+
+/**
+ * Your MyCalendarTwo object will be instantiated and called as such:
+ * MyCalendarTwo* obj = new MyCalendarTwo();
+ * bool param_1 = obj->book(startTime,endTime);
+ */
