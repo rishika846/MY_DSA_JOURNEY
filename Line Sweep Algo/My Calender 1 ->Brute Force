@@ -1,0 +1,38 @@
+class MyCalendar {
+public:
+    // Brute Force 
+    vector<vector<int>> bookings;
+    MyCalendar() {
+        
+    }
+    
+    bool book(int startTime, int endTime) {
+        if(bookings.size()==0){
+            bookings.push_back({startTime,endTime});
+            return true; 
+        }
+        else{
+            for(int i=0;i<bookings.size();i++){
+                int s1=bookings[i][0];
+                int e1=bookings[i][1];
+                //check for overlap
+                if(max(s1,startTime)<min(e1,endTime)){
+                    return false;
+                }
+                
+            
+            }
+        }
+         bookings.push_back({startTime, endTime});
+
+        return true;
+
+        
+    }
+};
+
+/**
+ * Your MyCalendar object will be instantiated and called as such:
+ * MyCalendar* obj = new MyCalendar();
+ * bool param_1 = obj->book(startTime,endTime);
+ */
