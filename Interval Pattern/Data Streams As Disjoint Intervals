@@ -1,0 +1,92 @@
+class SummaryRanges {
+public:
+vector<int> stream;
+    SummaryRanges() {
+        
+    }
+    
+    void addNum(int value) {
+        stream.push_back(value);
+        sort(stream.begin(),stream.end());
+        // remove duplicates
+        stream.erase(unique(stream.begin(), stream.end()), stream.end());
+        
+    }
+    
+    vector<vector<int>> getIntervals() {
+        vector<vector<int>> res;
+        if(stream.size()==0)return res;
+        int start=stream[0];
+        int end=stream[0];
+        for(int i=1;i<stream.size();i++){
+            if(stream[i]==end+1){
+                end=stream[i];
+
+
+            }
+            else{
+                res.push_back({start,end});
+                start=stream[i];
+                end=stream[i];
+            }
+        }
+        res.push_back({start,end});
+        
+    return res;
+        
+    }
+};
+
+/**
+ * Your SummaryRanges object will be instantiated and called as such:
+ * SummaryRanges* obj = new SummaryRanges();
+ * obj->addNum(value);
+ * vector<vector<int>> param_2 = obj->getIntervals();
+ */
+
+
+//Using set Data Structure
+class SummaryRanges {
+public:
+
+    set<int> stream;
+
+    SummaryRanges() {
+        
+    }
+    
+    void addNum(int value) {
+        stream.insert(value);
+    }
+    
+    vector<vector<int>> getIntervals() {
+
+        vector<vector<int>> res;
+
+        if(stream.empty()) return res;
+
+        auto it = stream.begin();
+
+        int start = *it;
+        int end = *it;
+
+        ++it;
+
+        for(; it != stream.end(); ++it) {
+
+            if(*it == end + 1) {
+                end = *it;
+            }
+            else {
+                res.push_back({start, end});
+
+                start = *it;
+                end = *it;
+            }
+        }
+
+        res.push_back({start, end});
+
+        return res;
+    }
+};
