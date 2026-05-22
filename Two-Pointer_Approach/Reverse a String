@@ -1,0 +1,24 @@
+//Time Complexity : O(n)
+//Space Complexity :O(1)
+
+class Solution {
+    void swap(char &s1,char &s2){
+        char s3;
+        s3=s1;
+        s1=s2;
+        s2=s3;
+        
+    }
+  public:
+    string reverseString(string& s) {
+        // code here
+        int i=0;
+        int j=s.size()-1;
+        while(i<=j){
+            swap(s[i],s[j]);
+            i++;
+            j--;
+        }
+        return s;
+    }
+};
